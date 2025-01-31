@@ -1,0 +1,10 @@
+{
+  "name": "pg",
+  "connector": "postgresql",
+  "url": "",
+  "host": "localhost",
+  "port": 5432,
+  "user": "damuser",
+  "password": "1234",
+  "database": "test"
+}
