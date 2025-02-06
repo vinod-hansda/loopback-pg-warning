@@ -75,6 +75,29 @@ understand how you can continue to add features to this application.
 [![LoopBack](https://github.com/loopbackio/loopback-next/raw/master/docs/site/imgs/branding/Powered-by-LoopBack-Badge-(blue)-@2x.png)](http://loopback.io/)
 
 
-## Command to run Postgres to be consumed by LB4 in Docker container
-## DB details are DB name: postgres, username: postgres, password: 1234, port: 5432
+
+## Steps to reproduce the issue
+### Step 1: start a DB container
+```sh
 docker run --name external-postgres -e POSTGRES_PASSWORD=1234 -p 5432:5432  -d postgres:16
+```
+
+### step 2: install npm packages
+```sh
+npm ci
+```
+
+### step 3: execute the tests
+```sh
+npm run test
+```
+
+### step 4: check logs for the issue
+```sh
+(node:80014) MaxListenersExceededWarning: Possible EventEmitter memory leak detected. 17 connected listeners added to [PgDataSource]. Use emitter.setMaxListeners() to increase limit
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:80014) MaxListenersExceededWarning: Possible EventEmitter memory leak detected. 17 error listeners added to [PgDataSource]. Use emitter.setMaxListeners() to increase limit
+(node:80014) MaxListenersExceededWarning: Possible EventEmitter memory leak detected. 11 error listeners added to [Client]. Use emitter.setMaxListeners() to increase limit
+(node:80014) MaxListenersExceededWarning: Possible EventEmitter memory leak detected. 11 error listeners added to [Client]. Use emitter.setMaxListeners() to increase limit
+(node:80014) MaxListenersExceededWarning: Possible EventEmitter memory leak detected. 11 error listeners added to [Client]. Use emitter.setMaxListeners() to increase limit
+```

@@ -1,4 +1,3 @@
-import EventEmitter from 'events';
 import {ApplicationConfig, LoopbackPgApplication} from './application';
 import {PgDataSource} from './datasources/pg.datasource';
 
@@ -22,8 +21,8 @@ export async function main(options: ApplicationConfig = {}) {
   console.log(`Server is running at ${url}`);
   console.log(`Try ${url}/ping`);
 
-  // Decrease the default max listeners from 10 to 3 to reproduce memory leak warning
-  EventEmitter.defaultMaxListeners = 3;
+  // Decrease the default enforces the symptom of the problem more quickly
+  //EventEmitter.defaultMaxListeners = 3;
 
   return app;
 }
