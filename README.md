@@ -87,7 +87,12 @@ docker run --name external-postgres -e POSTGRES_PASSWORD=1234 -p 5432:5432  -d p
 npm ci
 ```
 
-### step 3: execute the tests
+### step 3: run migration to create table in DB
+```sh
+npm run migrate
+```
+
+### step 4: execute the tests
 ```sh
 npm run test
 ```
