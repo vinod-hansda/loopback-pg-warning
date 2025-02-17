@@ -8,9 +8,6 @@ export const pgDbConfig = {
   min: 2,
   max: 10,
   lazyConnect: true,
-  afterConnect: (connection: any) => {
-    console.log('DB connected', connection);
-  },
   onError: (dbError: Error) => {
     console.log('Error in DB connection %o', dbError);
   },
